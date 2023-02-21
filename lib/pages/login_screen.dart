@@ -62,100 +62,102 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: EdgeInsets.all(20),
           child: Form(
             key: _formkey,
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 10,
-                ),
-                TextFormField(
-                  controller: emailController,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                  autofocus: false,
-                  decoration: InputDecoration(
-                    labelText: "Email",
-                    hintText: "Enter Email here",
-                    errorStyle: TextStyle(
-                      fontSize: 15,
-                      color: Colors.red,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    controller: emailController,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    autofocus: false,
+                    decoration: InputDecoration(
+                      labelText: "Email",
+                      hintText: "Enter Email here",
+                      errorStyle: TextStyle(
+                        fontSize: 15,
+                        color: Colors.red,
+                      ),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
                     ),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                  ),
-                  validator: (value) {
-                    if (value == null) {
-                      return "Empty Filled";
-                    } else if (!value.contains("@")) {
-                      return "Invalid email format";
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
-                  controller: passwordController,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                  obscureText: true,
-                  autofocus: false,
-                  decoration: InputDecoration(
-                    labelText: "Password",
-                    hintText: "Enter password here",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                  ),
-                  validator: (value) {
-                    if (value == null) {
-                      return "Filled is Empty";
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      if (_formkey.currentState!.validate()) {
-                        setState(() {
-                          email = emailController.text.trim();
-                          password = passwordController.text.trim();
-                        });
-                        login();
+                    validator: (value) {
+                      if (value == null) {
+                        return "Empty Filled";
+                      } else if (!value.contains("@")) {
+                        return "Invalid email format";
                       }
+                      return null;
                     },
-                    child: Text(
-                      "Login",
-                      style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    )),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPassword()));
-                        },
-                        child: Text(
-                          "Forget Password?",
-                          style: TextStyle(fontSize: 18),
-                        )),
-                    ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpScreen()));
-                        },
-                        child: Text(
-                          "SignUp",
-                          style: TextStyle(fontSize: 15, color: Colors.white),
-                        )),
-                  ],
-                )
-              ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    controller: passwordController,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    obscureText: true,
+                    autofocus: false,
+                    decoration: InputDecoration(
+                      labelText: "Password",
+                      hintText: "Enter password here",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                    ),
+                    validator: (value) {
+                      if (value == null) {
+                        return "Filled is Empty";
+                      }
+                      return null;
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        if (_formkey.currentState!.validate()) {
+                          setState(() {
+                            email = emailController.text.trim();
+                            password = passwordController.text.trim();
+                          });
+                          login();
+                        }
+                      },
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      )),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPassword()));
+                          },
+                          child: Text(
+                            "Forget Password?",
+                            style: TextStyle(fontSize: 18),
+                          )),
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpScreen()));
+                          },
+                          child: Text(
+                            "SignUp",
+                            style: TextStyle(fontSize: 15, color: Colors.white),
+                          )),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),
